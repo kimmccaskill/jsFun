@@ -41,12 +41,12 @@ const kittyPrompts = {
     // Sort the kitties by their age
 
     const result = kitties.sort(function (a, b) {
-  return b.age - a.age;
+    return b.age - a.age;
 });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // .sort() method sorts an array based on values.  If we want to sort specific values, we have to use a compare function.  We sorted the value of b - value of a so they would be sorted in a descending order.
   },
 
   growUp() {
