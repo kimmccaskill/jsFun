@@ -62,8 +62,11 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    this.sortByAge();
+    const result = kitties.map(kitty => {
+    kitty.age += 2;
+    return kitty;
+});;
     return result;
   }
 };
