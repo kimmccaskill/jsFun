@@ -68,6 +68,9 @@ const kittyPrompts = {
     return kitty;
 });;
     return result;
+
+    // Annotation:
+    // .map creates a new array by going through each element in the called array.  We reassigned each element's age to their current age + 2.  We then returned the entire object of kitty.  The test is running for the kitties to be in descending order based on age so we ran our sortByAge() method that we created in the previous exercise.
   }
 };
 
