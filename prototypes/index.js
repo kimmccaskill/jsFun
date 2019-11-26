@@ -25,11 +25,16 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.reduce((acc, kitty) => {
+      if(kitty.color === 'orange'){
+        acc.push(kitty.name);
+      }
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We are given an array and want to return a new array based on property value.  New array is set using reduce and conditional is set based on the kitty's color.  The accumulator starts as an empty array shown by the brackets for initial valuel.  We use .push() to push kitty names into array based on conditional.  We use dot notation because we are simply calling a string(key) instead of a variable.
   },
 
   sortByAge() {
