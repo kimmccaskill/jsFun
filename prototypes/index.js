@@ -25,21 +25,28 @@ const kittyPrompts = {
 
     // Return an array of just the names of kitties who are orange e.g.
     // ['Tiger', 'Snickers']
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.reduce((acc, kitty) => {
+      if(kitty.color === 'orange'){
+        acc.push(kitty.name);
+      }
+      return acc;
+    },[]);
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // We are given an array and want to return a new array based on property value.  New array is set using reduce and conditional is set based on the kitty's color.  The accumulator starts as an empty array shown by the brackets for initial valuel.  We use .push() to push kitty names into array based on conditional.  We use dot notation because we are simply calling a string(key) instead of a variable.
   },
 
   sortByAge() {
     // Sort the kitties by their age
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = kitties.sort(function (a, b) {
+    return b.age - a.age;
+});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // .sort() method sorts an array based on values.  If we want to sort specific values, we have to use a compare function.  We sorted the value of b - value of a so they would be sorted in a descending order.
   },
 
   growUp() {
@@ -55,9 +62,15 @@ const kittyPrompts = {
     //   color: 'orange'
     // },
     // ...etc]
-
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    this.sortByAge();
+    const result = kitties.map(kitty => {
+    kitty.age += 2;
+    return kitty;
+});;
     return result;
+
+    // Annotation:
+    // .map creates a new array by going through each element in the called array.  We reassigned each element's age to their current age + 2.  We then returned the entire object of kitty.  The test is running for the kitties to be in descending order based on age so we ran our sortByAge() method that we created in the previous exercise.
   }
 };
 
