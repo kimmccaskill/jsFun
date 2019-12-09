@@ -41,8 +41,8 @@ const kittyPrompts = {
     // Sort the kitties by their age
 
     const result = kitties.sort(function (a, b) {
-    return b.age - a.age;
-});
+      return b.age - a.age;
+    });
     return result;
 
     // Annotation:
@@ -64,9 +64,9 @@ const kittyPrompts = {
     // ...etc]
     this.sortByAge();
     const result = kitties.map(kitty => {
-    kitty.age += 2;
-    return kitty;
-});;
+      kitty.age += 2;
+      return kitty;
+    });
     return result;
 
     // Annotation:
@@ -101,7 +101,30 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // Given an array(clubs) of objects.
+    // We want to return an object.
+    //
+    const result = clubs.reduce((acc, club) => {
+      //first club = { club: 'Drama', members: ['Louisa', 'Pam', 'Nathaniel' ] }
+
+      // acc after first run {
+      // Louisa: ['Drama']
+      // Pam: ['Drama']
+      // Nathaniel: ['Drama']
+      // }
+      // Given an array of names
+      // currently -> acc = {}
+
+      //step one: check if the name exists in the objects
+      club.members.forEach(member => {
+        if(!acc[member]) {
+          acc[member] = [];
+        }
+        acc[member].push(club.club);
+      });
+      return acc;
+    }, {});
+
     return result;
 
     // Annotation:
@@ -136,8 +159,10 @@ const modPrompts = {
     //   { mod: 3, studentsPerInstructor: 10 },
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
+const result = mods.map(mod => {
+  return {mod: mod.mod, studentsPerInstructor: mod.students/mod.instructors}
+})
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -172,7 +197,9 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+      return {flavor: cake.cakeFlavor, inStock: cake.inStock}
+    });
     return result;
 
     // Annotation:
@@ -200,7 +227,9 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      return cake.inStock > 0;
+    });
     return result;
 
     // Annotation:
@@ -375,7 +404,7 @@ const nationalParksPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-}
+};
 
 
 
