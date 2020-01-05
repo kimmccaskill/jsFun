@@ -203,7 +203,7 @@ const cakePrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // map returns an array with the same amount as the input array.
   },
 
   onlyInStock() {
@@ -288,12 +288,10 @@ const cakePrompts = {
     const result = cakes.reduce((acc, cake) => {
       cake.toppings.forEach(topping => {
         if (!acc[topping]) {
-        console.log('new stuff!')
         acc[topping] = 0
         }
-        console.log('old stuff!')
         acc[topping]++
-        
+
       })
       return acc
     }, {});
@@ -331,7 +329,8 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => classroom.program === 'FE'
+    );
     return result;
 
     // Annotation:
