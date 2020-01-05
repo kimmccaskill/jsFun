@@ -41,8 +41,8 @@ const kittyPrompts = {
     // Sort the kitties by their age
 
     const result = kitties.sort(function (a, b) {
-    return b.age - a.age;
-});
+      return b.age - a.age;
+    });
     return result;
 
     // Annotation:
@@ -64,9 +64,9 @@ const kittyPrompts = {
     // ...etc]
     this.sortByAge();
     const result = kitties.map(kitty => {
-    kitty.age += 2;
-    return kitty;
-});;
+      kitty.age += 2;
+      return kitty;
+    });
     return result;
 
     // Annotation:
@@ -101,7 +101,30 @@ const clubPrompts = {
     //   ...etc
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    // Given an array(clubs) of objects.
+    // We want to return an object.
+    //
+    const result = clubs.reduce((acc, club) => {
+      //first club = { club: 'Drama', members: ['Louisa', 'Pam', 'Nathaniel' ] }
+
+      // acc after first run {
+      // Louisa: ['Drama']
+      // Pam: ['Drama']
+      // Nathaniel: ['Drama']
+      // }
+      // Given an array of names
+      // currently -> acc = {}
+
+      //step one: check if the name exists in the objects
+      club.members.forEach(member => {
+        if(!acc[member]) {
+          acc[member] = [];
+        }
+        acc[member].push(club.club);
+      });
+      return acc;
+    }, {});
+
     return result;
 
     // Annotation:
@@ -136,8 +159,10 @@ const modPrompts = {
     //   { mod: 3, studentsPerInstructor: 10 },
     //   { mod: 4, studentsPerInstructor: 8 }
     // ]
+const result = mods.map(mod => {
+  return {mod: mod.mod, studentsPerInstructor: mod.students/mod.instructors}
+})
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
     return result;
 
     // Annotation:
@@ -172,11 +197,13 @@ const cakePrompts = {
     //    ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.map(cake => {
+      return {flavor: cake.cakeFlavor, inStock: cake.inStock}
+    });
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // map returns an array with the same amount as the input array.
   },
 
   onlyInStock() {
@@ -200,7 +227,9 @@ const cakePrompts = {
     // ..etc
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.filter(cake => {
+      return cake.inStock > 0;
+    });
     return result;
 
     // Annotation:
@@ -211,7 +240,9 @@ const cakePrompts = {
     // Return the total amount of cakes in stock e.g.
     // 59
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      return acc += cake.inStock
+    }, 0);
     return result;
 
     // Annotation:
@@ -223,7 +254,14 @@ const cakePrompts = {
     // every cake in the dataset e.g.
     // ['dutch process cocoa', 'toasted sugar', 'smoked sea salt', 'berries', ..etc]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        if (!acc.includes(topping)) {
+          acc.push(topping)
+        }
+      })
+      return acc
+    }, []);
     return result;
 
     // Annotation:
@@ -240,8 +278,23 @@ const cakePrompts = {
     //    'berries': 2,
     //    ...etc
     // }
+    // first run-through RESULT:
+    // {
+    //    'dutch process cocoa': 1,
+    //    'toasted sugar': 1,
+    //    'smoked sea salt': 1
+    // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = cakes.reduce((acc, cake) => {
+      cake.toppings.forEach(topping => {
+        if (!acc[topping]) {
+        acc[topping] = 0
+        }
+        acc[topping]++
+
+      })
+      return acc
+    }, {});
     return result;
 
     // Annotation:
@@ -276,7 +329,8 @@ const classPrompts = {
     //   { roomLetter: 'G', program: 'FE', capacity: 29 }
     // ]
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.filter(classroom => classroom.program === 'FE'
+    );
     return result;
 
     // Annotation:
@@ -291,17 +345,24 @@ const classPrompts = {
     //   beCapacity: 96
     // }
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.reduce((acc, classroom) => {
+      if(classroom.program === 'FE') {
+        acc.feCapacity += classroom.capacity
+      } else{
+        acc.beCapacity += classroom.capacity
+      }
+      return acc
+    }, {feCapacity: 0, beCapacity: 0});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because the output is a single object taken from an array of objects, we use reduce.  Each classroom is checked for its program and the capacity is adjusted based on what program the classroom is in with a conditional
   },
 
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = classrooms.sort((a,b) => a.capacity - b.capacity)
     return result;
 
     // Annotation:
@@ -329,11 +390,18 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((acc, park) => {
+      if(!park.visited) {
+        acc.parksToVisit.push(park.name)
+      } else{
+        acc.parksVisited.push(park.name)
+      }
+      return acc;
+    }, {parksToVisit: [], parksVisited: []});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // With expected output being an object with two properties, reduce method was used.  Conditional is used to check if visited or not. .push is used to put name of national park into array
   },
 
   getParkInEachState() {
@@ -375,7 +443,7 @@ const nationalParksPrompts = {
     // Annotation:
     // Write your annotation here as a comment
   }
-}
+};
 
 
 

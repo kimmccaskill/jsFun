@@ -18,7 +18,7 @@ const {
 
 describe("PROTOTYPES", () => {
   describe("Kitty Prompts", () => {
-    it("orangeKittyNames", () => {
+    it.only("orangeKittyNames", () => {
       const e = kittyPrompts.orangeKittyNames();
       expect(e).to.deep.equal(["Tiger", "Snickers"])
     }), it("sortByAge", () => {
@@ -61,7 +61,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Club Prompts", () => {
-    it("membersBelongingToClubs", () => {
+    it.only("membersBelongingToClubs", () => {
       const e = clubPrompts.membersBelongingToClubs({
         Louisa: ["Drama", "Art"],
         Pam: ["Drama", "Chess", "Newspaper"],
@@ -88,7 +88,7 @@ describe("PROTOTYPES", () => {
       })
     })
   }), describe("Mod Prompts", () => {
-    it("studentsPerMod", () => {
+    it.only("studentsPerMod", () => {
       const e = modPrompts.studentsPerMod();
       expect(e).to.deep.equal([{
         mod: 1,
@@ -105,7 +105,7 @@ describe("PROTOTYPES", () => {
       }])
     })
   }), describe("Cake Prompts", () => {
-    it("stockPerCake", () => {
+    it.only("stockPerCake", () => {
       const e = cakePrompts.stockPerCake();
       expect(e).to.deep.equal([{
         flavor: "dark chocolate",
@@ -126,7 +126,7 @@ describe("PROTOTYPES", () => {
         flavor: "honey",
         inStock: 0
       }])
-    }), it("onlyInStock", () => {
+    }), it.only("onlyInStock", () => {
       const e = cakePrompts.onlyInStock();
       expect(e).to.deep.equal([{
         cakeFlavor: "dark chocolate",
@@ -153,13 +153,13 @@ describe("PROTOTYPES", () => {
         toppings: ["smoked sea salt", "crystallized ginger", "berries"],
         inStock: 21
       }])
-    }), it("totalInventory", () => {
+    }), it.only("totalInventory", () => {
       const e = cakePrompts.totalInventory();
       expect(e).to.deep.equal(59)
-    }), it("allToppings", () => {
+    }), it.only("allToppings", () => {
       const e = cakePrompts.allToppings();
       expect(e).to.deep.equal(["dutch process cocoa", "toasted sugar", "smoked sea salt", "berries", "edible flowers", "mint", "cranberry", "crystallized ginger"])
-    }), it("groceryList", () => {
+    }), it.only("groceryList", () => {
       const e = cakePrompts.groceryList();
       expect(e).to.deep.equal({
         "dutch process cocoa": 1,
@@ -173,7 +173,7 @@ describe("PROTOTYPES", () => {
       })
     })
   }), describe("Class Prompts", () => {
-    it("feClassrooms", () => {
+    it.only("feClassrooms", () => {
       const e = classPrompts.feClassrooms();
       expect(e).to.deep.equal([{
         roomLetter: "A",
@@ -192,13 +192,13 @@ describe("PROTOTYPES", () => {
         program: "FE",
         capacity: 29
       }])
-    }), it("totalCapacities", () => {
+    }), it.only("totalCapacities", () => {
       const e = classPrompts.totalCapacities();
       expect(e).to.deep.equal({
         feCapacity: 110,
         beCapacity: 96
       })
-    }), it("sortByCapacity", () => {
+    }), it.only("sortByCapacity", () => {
       const e = classPrompts.sortByCapacity();
       expect(e).to.deep.equal([{
         roomLetter: "H",
@@ -236,7 +236,7 @@ describe("PROTOTYPES", () => {
     })
   }),
   describe("National Park Prompts", () => {
-    it("getParkVisitList", () => {
+    it.only("getParkVisitList", () => {
       const e = nationalParksPrompts.getParkVisitList();
       expect(e).to.deep.equal({
         parksToVisit: [ 'Yellowstone', 'Glacier', 'Everglades' ],
