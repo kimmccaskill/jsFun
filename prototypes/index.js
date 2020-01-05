@@ -362,9 +362,7 @@ const classPrompts = {
   sortByCapacity() {
     // Return the array of classrooms sorted by their capacity (least capacity to greatest)
 
-    const result = classrooms.sort((a,b) => {
-      return a.capacity - b.capacity
-    })
+    const result = classrooms.sort((a,b) => a.capacity - b.capacity)
     return result;
 
     // Annotation:
@@ -392,11 +390,18 @@ const nationalParksPrompts = {
     //   parksVisited: ["Rocky Mountain", "Acadia", "Zion"]
     //}
 
-    const result = 'REPLACE WITH YOUR RESULT HERE';
+    const result = nationalParks.reduce((acc, park) => {
+      if(!park.visited) {
+        acc.parksToVisit.push(park.name)
+      } else{
+        acc.parksVisited.push(park.name)
+      }
+      return acc;
+    }, {parksToVisit: [], parksVisited: []});
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // With expected output being 
   },
 
   getParkInEachState() {
