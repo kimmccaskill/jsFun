@@ -356,7 +356,7 @@ const classPrompts = {
     return result;
 
     // Annotation:
-    // Write your annotation here as a comment
+    // Because the output is a single object taken from an array of objects, we use reduce.  Each classroom is checked for its program and the capacity is adjusted based on what program the classroom is in with a conditional
   },
 
   sortByCapacity() {
