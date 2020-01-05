@@ -401,7 +401,7 @@ const nationalParksPrompts = {
     return result;
 
     // Annotation:
-    // With expected output being 
+    // With expected output being an object with two properties, reduce method was used.  Conditional is used to check if visited or not. .push is used to put name of national park into array
   },
 
   getParkInEachState() {
